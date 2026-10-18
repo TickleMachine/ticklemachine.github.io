@@ -28,6 +28,9 @@
       if (navPanel.classList.contains('open')) closeMenu(); else openMenu();
     });
     navPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('pointerdown', event => {
+      if (!navPanel.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+    });
     document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
     window.addEventListener('resize', () => { if (window.innerWidth > 850) closeMenu(); });
   }
